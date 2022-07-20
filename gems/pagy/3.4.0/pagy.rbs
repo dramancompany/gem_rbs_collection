@@ -1,0 +1,83 @@
+# Core class
+class Pagy
+  VERSION: ::String
+
+  # Root pathname to get the path of Pagy files like templates or dictionaries
+  def self.root: () -> untyped
+
+  DEFAULT: ::Hash[untyped, untyped]
+
+  attr_reader count: untyped
+
+  attr_reader page: untyped
+
+  attr_reader items: untyped
+
+  attr_reader vars: untyped
+
+  attr_reader pages: untyped
+
+  attr_reader last: untyped
+
+  attr_reader offset: untyped
+
+  attr_reader in: untyped
+
+  attr_reader from: untyped
+
+  attr_reader to: untyped
+
+  attr_reader prev: untyped
+
+  attr_reader next: untyped
+
+  attr_reader params: untyped
+
+  # Merge and validate the options, do some simple arithmetic and set the instance variables
+  def initialize: (untyped vars) -> void
+
+  # Return the array of page numbers and :gap items e.g. [1, :gap, 7, 8, "9", 10, 11, :gap, 36]
+  def series: (?size: untyped size, **untyped _) -> (::Array[untyped] | untyped)
+
+  # Allow the customization of the output (overridden by the calendar extra)
+  def label_for: (untyped page) -> untyped
+
+  # Allow the customization of the output (overridden by the calendar extra)
+  def label: () -> untyped
+
+  # Apply defaults, cleanup blanks and set @vars
+  def normalize_vars: (untyped vars) -> untyped
+
+  # Setup and validates the passed vars: var must be present and value.to_i must be >= to min
+  def setup_vars: (untyped name_min) -> untyped
+
+  # Setup @items (overridden by the gearbox extra)
+  def setup_items_var: () -> untyped
+
+  # Setup @pages and @last (overridden by the gearbox extra)
+  def setup_pages_var: () -> untyped
+
+  # Setup @offset based on the :gearbox_items variable
+  def setup_offset_var: () -> untyped
+
+  # Setup and validate @params
+  def setup_params_var: () -> untyped
+
+  # Define a few generic methods to paginate an ORM collection out of the box,
+  # or any collection by overriding pagy_get_items and/or pagy_get_vars in your controller
+  # See also the extras if you need specialized methods to paginate Arrays or other collections
+  module Backend
+    private
+
+    # Return Pagy object and paginated items/results
+    def pagy: (untyped collection, ?::Hash[untyped, untyped] vars) -> ::Array[untyped]
+
+    # Sub-method called only by #pagy: here for easy customization of variables by overriding
+    # You may need to override the count call for non AR collections
+    def pagy_get_vars: (untyped collection, untyped vars) -> untyped
+
+    # Sub-method called only by #pagy: here for easy customization of record-extraction by overriding
+    # You may need to override this method for collections without offset|limit
+    def pagy_get_items: (untyped collection, untyped pagy) -> untyped
+  end
+end

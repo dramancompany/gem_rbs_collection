@@ -1,0 +1,17 @@
+module ActionCable
+  module Connection
+    module Callbacks
+      extend ActiveSupport::Concern
+
+      include ActiveSupport::Callbacks
+
+      module ClassMethods
+        def before_command: (*untyped methods) { () -> untyped } -> untyped
+
+        def after_command: (*untyped methods) { () -> untyped } -> untyped
+
+        def around_command: (*untyped methods) { () -> untyped } -> untyped
+      end
+    end
+  end
+end

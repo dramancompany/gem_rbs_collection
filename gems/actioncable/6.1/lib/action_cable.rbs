@@ -1,0 +1,6 @@
+module ActionCable
+  INTERNAL: ::Hash[untyped, untyped]
+
+  # Singleton instance of the server
+  def self?.server: () -> untyped
+end

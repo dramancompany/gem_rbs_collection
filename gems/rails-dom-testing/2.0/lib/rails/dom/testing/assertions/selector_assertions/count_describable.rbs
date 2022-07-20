@@ -1,0 +1,17 @@
+module Rails
+  module Dom
+    module Testing
+      module Assertions
+        module SelectorAssertions
+          module CountDescribable
+            private
+
+            def count_description: (untyped min, untyped max, untyped count) -> untyped
+
+            def pluralize_element: (untyped quantity) -> untyped
+          end
+        end
+      end
+    end
+  end
+end

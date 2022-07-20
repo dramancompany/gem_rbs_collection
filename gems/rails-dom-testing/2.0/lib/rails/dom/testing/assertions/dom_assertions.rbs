@@ -1,0 +1,37 @@
+module Rails
+  module Dom
+    module Testing
+      module Assertions
+        module DomAssertions
+          # \Test two HTML strings for equivalency (e.g., equal even when attributes are in another order)
+          #
+          #   # assert that the referenced method generates the appropriate HTML string
+          #   assert_dom_equal '<a href="http://www.example.com">Apples</a>', link_to("Apples", "http://www.example.com")
+          def assert_dom_equal: (untyped expected, untyped actual, ?untyped? message, ?strict: bool strict) -> untyped
+
+          # The negated form of +assert_dom_equal+.
+          #
+          #   # assert that the referenced method does not generate the specified HTML string
+          #   assert_dom_not_equal '<a href="http://www.example.com">Apples</a>', link_to("Oranges", "http://www.example.com")
+          def assert_dom_not_equal: (untyped expected, untyped actual, ?untyped? message, ?strict: bool strict) -> untyped
+
+          def compare_doms: (untyped expected, untyped actual, untyped strict) -> (::FalseClass | ::TrueClass)
+
+          def extract_children: (untyped node, untyped strict) -> untyped
+
+          def equal_children?: (untyped child, untyped other_child, untyped strict) -> (::FalseClass | untyped)
+
+          def equal_child?: (untyped child, untyped other_child, untyped strict) -> untyped
+
+          def equal_attribute_nodes?: (untyped nodes, untyped other_nodes) -> (::FalseClass | ::TrueClass)
+
+          def equal_attribute?: (untyped attr, untyped other_attr) -> untyped
+
+          private
+
+          def fragment: (untyped text) -> untyped
+        end
+      end
+    end
+  end
+end

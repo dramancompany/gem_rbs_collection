@@ -1,0 +1,11 @@
+module Rails
+  module Dom
+    module Testing
+      module Assertions
+        include DomAssertions
+
+        include SelectorAssertions
+      end
+    end
+  end
+end
