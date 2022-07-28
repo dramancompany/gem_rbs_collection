@@ -1,6 +1,10 @@
 module ActiveStorage
   # Representation of a single attachment to a model.
   class Attached::One < Attached
+    def variant: (Hash[Symbol, untyped]) -> Variant
+
+    def variable?: () -> bool
+
     # delegated from Blob
     def url: () -> String
 

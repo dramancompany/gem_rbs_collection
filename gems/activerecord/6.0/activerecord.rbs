@@ -378,6 +378,11 @@ interface _ActiveRecord_Relation_ClassMethods[Model, Relation, PrimaryKey]
   def update_all: (*untyped) -> untyped
   def select: (*Symbol | String) -> Relation
             | () { (Model) -> boolish } -> Array[Model]
+
+  # https://github.com/ruby/rbs/issues/422
+  # 원래 ActiveRecord::Relation에서는 method missing을 통해 Model에 구현된 method에 접근이 가능하나 rbs에서 해당 기능을 지원하지 않는다.
+  # 따라서 Applicant모델의 class method이지만 불가피하게 여기에 정의하였다
+  def join_folder_open_profile: () -> self
 end
 
 # https://github.com/rails/rails/blob/fbe2433be6e052a1acac63c7faf287c52ed3c5ba/activerecord/lib/arel/nodes/unary.rb
