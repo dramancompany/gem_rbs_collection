@@ -291,6 +291,7 @@ interface _ActiveRecord_Relation[Model, PrimaryKey]
   def pluck: (Symbol | String column) -> Array[untyped]
            | (*Symbol | String columns) -> Array[Array[untyped]]
   def where: (*untyped) -> self
+  def missing: (*untyped) -> self
   def not: (*untyped) -> self
   def exists?: (*untyped) -> bool
   def order: (*untyped) -> self
@@ -341,6 +342,7 @@ interface _ActiveRecord_Relation_ClassMethods[Model, Relation, PrimaryKey]
   def pluck: (Symbol | String column) -> Array[untyped]
            | (*Symbol | String columns) -> Array[Array[untyped]]
   def where: (*untyped) -> Relation
+  def missing: (*untyped) -> Relation
   def exists?: (*untyped) -> bool
   def order: (*untyped) -> Relation
   def group: (*Symbol | String) -> untyped
