@@ -4872,6 +4872,7 @@ end
 
 class Hash[unchecked out K, unchecked out V]
   def as_json: (?untyped? options) -> untyped
+  def to_json: () -> String
 end
 
 class URI::Generic
