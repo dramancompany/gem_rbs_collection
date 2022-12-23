@@ -3,10 +3,17 @@
 *                    @pocke
 
 # Maintainer of individual gems (alphabetical order)
-/gems/ast            @pocke
-/gems/aws-sdk-*      @ksss
-/gems/i18n           @takahashim
-/gems/rolify         @ksss
+/gems/ast               @pocke
+/gems/aws-sdk-*         @ksss
+/gems/business_time     @ksss
+/gems/dogstatsd-ruby    @VTRyo
+/gems/faraday           @yykamei
+/gems/i18n              @takahashim
+/gems/rolify            @ksss
+/gems/stackprof         @pocke
+/gems/rails-dom-testing @ksss
+/gems/yard              @ksss
 
 # Misc
 /generators/aws-sdk-rbs-generator @ksss
+/generators/yard-generator @ksss

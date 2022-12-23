@@ -13766,7 +13766,7 @@ module ActiveRecord
       # Determines if one of the attributes passed in is the inheritance column,
       # and if the inheritance column is attr accessible, it initializes an
       # instance of the given subclass instead of the base class.
-      def new: (?untyped? attributes) ?{ () -> untyped } -> untyped
+      def new: (?untyped? attributes) ?{ () -> untyped } -> instance
 
       # Returns +true+ if this does not need STI type condition. Returns
       # +false+ if STI type condition needs to be applied.
@@ -19702,7 +19702,7 @@ module ActiveRecord
 
     # Like #find_or_create_by, but calls {new}[rdoc-ref:Core#new]
     # instead of {create}[rdoc-ref:Persistence::ClassMethods#create].
-    def find_or_initialize_by: (untyped attributes) { () -> untyped } -> untyped
+    def find_or_initialize_by: (untyped attributes) ?{ () -> untyped } -> untyped
 
     # Runs EXPLAIN on the query or queries triggered by this relation and
     # returns the result as a string. The string is formatted imitating the
@@ -21996,21 +21996,29 @@ module ActiveRecord
 
     public
 
-    BigInteger: untyped
+    class BigInteger < ActiveModel::Type::BigInteger
+    end
 
-    Binary: untyped
+    class Binary < ActiveModel::Type::Binary
+    end
 
-    Boolean: untyped
+    class Boolean < ActiveModel::Type::Boolean
+    end
 
-    Decimal: untyped
+    class Decimal < ActiveModel::Type::Decimal
+    end
 
-    Float: untyped
+    class Float < ActiveModel::Type::Float
+    end
 
-    Integer: untyped
+    class Integer < ActiveModel::Type::Integer
+    end
 
-    String: untyped
+    class String < ActiveModel::Type::String
+    end
 
-    Value: untyped
+    class Value < ActiveModel::Type::Value
+    end
   end
 end
 

@@ -3,8 +3,7 @@
 # Exit command with non-zero status code, Output logs of every command executed, Treat unset variables as an error when substituting.
 set -eou pipefail
 # Internal Field Separator - Linux shell variable
-IFS=$'
-	'
+IFS=$'\n\t'
 # Print shell input lines
 set -v
 
@@ -16,8 +15,10 @@ REPO_DIR=$(cd $(dirname $0)/../../..; pwd)
 bundle exec rbs --repo $REPO_DIR -r paranoia:2.5 \
        -r activerecord -r activesupport -r activemodel \
        -r time -r mutex_m -r monitor -r date -r singleton -r logger \
-       validate
+       validate --silent
 
 cd ${RBS_DIR}/_test
 # Run type checks
 bundle exec steep check
+
+$(git rev-parse --show-toplevel)/bin/check-untyped-call.rb

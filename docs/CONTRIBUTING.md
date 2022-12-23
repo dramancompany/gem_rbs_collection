@@ -85,6 +85,12 @@ Then you can run `steep check` to type check the test scripts.
 
 See existing gems for examples, like [redis/4.2](https://github.com/ruby/gem_rbs_collection/tree/main/gems/redis/4.2/_test) or [listen/3.2](https://github.com/ruby/gem_rbs_collection/tree/main/gems/listen/3.2/_test).
 
+### Write manifest.yaml
+
+`manifest.yaml` describes dependencies which do not appear in the gemspec.
+If this gem includes such dependencies, comment-out the following lines and declare the dependencies.
+If all dependencies appear in the gemspec, you should remove this file.
+See [the documentation](https://github.com/ruby/rbs/blob/master/docs/collection.md) for more information.
 
 ## Code Owners
 
@@ -102,7 +108,9 @@ Code owners can update the RBS themselves. Note that they cannot merge a PR them
 
 If you want to become a code owner, read this section.
 
-Note that you should consider moving RBS files to the gem's code repository and including them in the gem package instead if you are the maintainer of the gem.
+Note that if you are the maintainer of the gem, you should consider moving RBS files to the gem's code repository and including them in the gem package instead.
+
+#### If you want to become a code owner of existing gem
 
 First, send PRs for the gem you want to maintain. We value your achievements.
 
@@ -110,3 +118,8 @@ Then, request us to you become a code owner in a PR or issue.
 
 If it is accepted, open a PR to add your account into [.github/CODEOWNERS](https://github.com/ruby/gem_rbs_collection/blob/main/.github/CODEOWNERS).
 We merge the PR and invite you as an outside collaborator to this repository.
+
+#### If you want to become a code owner of new gem
+
+If you want to become a code owner of new gem, which will be added by yourself, you can just add you to CODEOWNERS file.
+The boilerplate generator asks you to become a code owner, so please enter your GitHub account if you'd like.

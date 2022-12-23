@@ -66,13 +66,13 @@ class Redis
   #   - `:xx => true`: Only set the key if it already exist.
   #   - `:keepttl => true`: Retain the time to live associated with the key.
   # @return [String, Boolean] `"OK"` or true, false if `:nx => true` or `:xx => true`
-  def set: (String key, top value, ?ex: Integer?, ?px: Integer?, ?nx: boolish, ?xx: boolish, ?keepttl: boolish) -> (String | bool)
+  def set: ((String | Symbol) key, top value, ?ex: Integer?, ?px: Integer?, ?nx: boolish, ?xx: boolish, ?keepttl: boolish) -> (String | bool)
 
   # Get the value of a key.
   #
   # @param [String] key
   # @return [String]
-  def get: (String key) -> String?
+  def get: ((String | Symbol) key) -> String?
 
 
   # Set one or more values.
@@ -198,4 +198,9 @@ class Redis
   # @return [String] `PONG`
   def ping: (?String? message) -> String
 
+  def zcard: (_ToS key) -> Integer
+  def zadd: (_ToS key, *untyped args, ?nx: bool, ?ch: bool, ?incr: bool) -> (bool | Integer | Float)
+          | (_ToS key, *untyped args, ?xx: bool, ?ch: bool, ?incr: bool) -> (bool | Integer | Float)
+  def zincrby: (_ToS key, Integer|Float|"-inf"|"+inf" increment, String member) -> Float
+  def zrem: (_ToS key, String|Array[String] member) -> (bool | Integer)
 end
